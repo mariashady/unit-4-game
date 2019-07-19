@@ -23,12 +23,9 @@ img {
    width: 130px; 
    height: 130px;
    padding: 5px;
-   display: block;
+   /* display: block; */
    margin-left: auto;
    margin-right: auto;
    
 }
-/* #crystals {
-    margin-left: auto;
-    margin-right: auto;
-} */
+
