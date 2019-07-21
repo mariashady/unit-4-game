@@ -25,11 +25,13 @@ $(document).ready(function () {
     // debugger;
     function gemValues() {
 
+        
+
         for (let i = 0; i < gemImages.length; i++) {
             let image = $("<img>");
             image.addClass("gem-buttons gem gem-image");
             image.attr("src", gemImages[i]);
-            image.attr("data-letter", Math.floor(Math.random() * 12) + 1);
+            image.attr("dataValue", Math.floor(Math.random() * 12) + 1);
             $("#crystals").append(image);
 
         }
@@ -50,65 +52,23 @@ $(document).ready(function () {
         //Display it on the broweser
         $(".numberToGuess").text("Number to guess: " + targetNumber);
         console.log(targetNumber);
-    }
-
-    //When player clicks a gem
-
-    //Assign random number to gem when clicked
-
-    //if/else statements when player hits target or does not hit target
 
 
+        //When player clicks a gem
+        $(".").on("click",)
+    
+
+        }
+
+
+        //Assign random number to gem when clicked
+
+        //if/else statements when player hits target or does not hit target
+
+    
     //Call functions
     gemValues();
     playGame();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
