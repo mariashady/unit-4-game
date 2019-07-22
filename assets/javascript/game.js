@@ -1,79 +1,85 @@
-$(document).ready(function () {
+$(document).ready(function() {
 
-    //Global Variables
-    let wins = 0;
-    let losses = 0;
+    //Global variables
+    var wins = 0;
+    var losses = 0;
     $(".winsText").text("Wins: " + wins);
-    $(".lossesText").text("Losses: " + losses);
+    $(".losseText").text("Losses: " + losses);
+    
+    //Array of different gem images
+    var crystalImages = ["assets/images/gem1.png", "assets/images/gem2.png", "assets/images/gem3.png", "assets/images/gem4.png"];
+    
+    //Assigning random number to each gem
+    function crystalValues() {
 
-
-
-    //Array of gem images
-    let gemImages = ["assets/images/gem1.png", "assets/images/gem2.png", "assets/images/gem3.png", "assets/images/gem4.png"]
-
-    //Functions
-    // function appendGems(){
-    //     gemImages.forEach(function(pics, index){
-    //         let gemImg = $("<img>") .attr('src', pics  )
-    //         $("#crystals").append(gemImg)
-    //         console.log (pics);
-    //     })
-    // }
-
-
-    //Function 1 assigns random number to each gem
-    // debugger;
-    function gemValues() {
-
+        for (var i = 0; i < crystalImages.length; i++) {
         
-
-        for (let i = 0; i < gemImages.length; i++) {
-            let image = $("<img>");
-            image.addClass("gem-buttons gem gem-image");
-            image.attr("src", gemImages[i]);
-            image.attr("dataValue", Math.floor(Math.random() * 12) + 1);
+            var image = $("<img>");
+            image.addClass("crystalButtons crystal crystalImages");
+            image.attr("src", crystalImages[i]);
+            image.attr("dataValue", Math.floor(Math.random() * 12) +1);
             $("#crystals").append(image);
-
         }
+
     }
 
-
-
-
-    //Function 2 to generate random number
     function playGame() {
-        let counter = 0;
-        $(".yourGuess").text("Your points: " + counter);
 
-        let targetNumber = Math.floor(Math.random() * 120 - 19 + 19);
+        
+        var counter = 0;
+        $(".yourGuess").text("Your points: " + counter); 
 
-
-
-        //Display it on the broweser
+        //Generates random number 
+        var targetNumber = Math.floor(Math.random() * (120-19) + 19);
+            
+        //And displays it on the browser
         $(".numberToGuess").text("Number to guess: " + targetNumber);
-        console.log(targetNumber);
+            console.log(targetNumber);
 
-
-        //When player clicks a gem
-        $(".").on("click",)
+        //When user clicks on a gem 
+        $(".crystalButtons").on("click", function() {
+            
+        //Assigns random number to each click
+            
+            let crystalIsClicked = true;
+            let crystalValue = ($(this).attr("dataValue"));
+            crystalValue = parseInt(crystalValue);
+            //Adds every click to global counter
+            counter += crystalValue;
+            
+            console.log(crystalValue);
+            console.log(counter);
+            
+            $(".yourGuess").text("Your points: " + counter);
+            
+            if (counter === targetNumber) {
+            alert("You win!");
+            wins++;
+            $(".winsText").text("Wins: " + wins);
+            $("#crystals").empty();
+            crystalValues();
+            playGame();
+            }
+            
+            else if (counter >= targetNumber) {
+            alert("Sorry, try again!");
+            losses++;
+            $(".lossesText").text("Losses: " + losses);
+            $("#crystals").empty();
+            crystalValues();
+            playGame();
+            }
+            
+        });
+    }
     
-
-        }
-
-
-        //Assign random number to gem when clicked
-
-        //if/else statements when player hits target or does not hit target
-
-    
-    //Call functions
-    gemValues();
+    crystalValues();
     playGame();
 
-
-
-
-
 });
+
+
+
+
 
 
